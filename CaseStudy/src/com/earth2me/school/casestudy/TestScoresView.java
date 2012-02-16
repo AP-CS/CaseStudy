@@ -50,7 +50,7 @@ final class TestScoresView implements Runnable
 		};
 
 		// Print each menu item.
-		for (int i = 1; i < menu.length + 1; i++)
+		for (int i = 0; i < menu.length; i++)
 		{
 			// Print it in the format " 1. Blah", ... "12. Blah", etc.
 			System.out.println(String.format("%2d. %s", i, menu[i]));
