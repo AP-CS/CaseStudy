@@ -19,8 +19,7 @@ public class TestScoresView
 		{
 			System.out.println("start of run method");
 			System.out.println("Number of students: " + model.size());
-			System.out.println("Index of current student: " +
-					model.currentPosition());
+			System.out.println("Index of current student: " + model.currentPosition());
 			displayMenu();
 			int command = getCommand("Enter a number [1-11]: ", 1, 11);
 			if (command == 11)
