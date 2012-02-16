@@ -52,6 +52,7 @@ final class TestScoresView implements Runnable
 		// Print each menu item.
 		for (int i = 1; i < menu.length + 1; i++)
 		{
+			// Print it in the format " 1. Blah", ... "12. Blah", etc.
 			System.out.println(String.format("%2d. %s", i, menu[i]));
 		}
 
@@ -263,10 +264,11 @@ final class TestScoresView implements Runnable
 		final Student temp = student.memberwiseClone();
 
 		final String menu = "EDIT MENU\n" +
-				"1. Change the name\n" +
-				"2. Change scores\n" +
-				"3. View the student\n" +
-				"4. Quit this menu\n";
+				"1. Change the name.\n" +
+				"2. Change all scores.\n" +
+				"3. Change individual score.\n" +
+				"4. View the student.\n" +
+				"5. Quit this menu.\n";
 
 		loop:
 		for (;;)
@@ -285,10 +287,14 @@ final class TestScoresView implements Runnable
 				break;
 
 			case 3:
-				displayStudent(student);
+				changeIndividualScore(student);
 				break;
 
 			case 4:
+				displayStudent(student);
+				break;
+
+			case 5:
 				break loop;
 			}
 		}
@@ -304,34 +310,88 @@ final class TestScoresView implements Runnable
 			model.replace(temp);
 		}
 	}
-	
+
 	/**
 	 * Prompts the user to change the name of a student.
-	 * @param student The student to change.
+	 * 
+	 * @param student
+	 *            The student to change.
 	 */
 	private void changeName(final Student student)
 	{
 		System.out.print("Enter the name of the student: ");
 		student.setName(reader.nextLine());
 	}
-	
+
 	/**
 	 * Prompts the user to change all of the score for a student's tests.
-	 * @param student The student to change.
+	 * 
+	 * @param student
+	 *            The student to change.
 	 */
 	private void changeAllScores(final Student student)
 	{
+		// Iterate through the tests and request scores.
 		for (int i = 1; i < -student.getNumberOfTests(); i++)
 		{
 			System.out.printf("Score on test %d: ", i);
+			
+			// Read the score.
 			final int score = reader.nextInt();
+			
+			// Limit the score to the range 0 <= score <= 100.
 			student.setScore(i, Math.max(0, Math.min(score, 100)));
 		}
 	}
-	
+
+	/**
+	 * Prompts a user to change an individual test score.
+	 * 
+	 * @param student
+	 *            The student to change.
+	 */
+	private void changeIndividualScore(final Student student)
+	{
+		// Ensure there is at least one test to change.
+		final int testCount = student.getNumberOfTests();
+		if (testCount < 1)
+		{
+			System.out.println("This student has no test scores.");
+			return;
+		}
+
+		// Loop until we have a valid test number.
+		int testIndex;
+		for (;;)
+		{
+			System.out.printf("Test score to change [1-%d]: ", testCount);
+			testIndex = reader.nextInt(); // Read the test number
+			if (testIndex < 1 || testIndex > testCount)
+			{
+				// Test number is invalid.  Loop again.
+				System.out.println("That test does not exist.");
+			}
+			else
+			{
+				// Test number is valid.  Break loop.
+				break;
+			}
+		}
+		
+		System.out.printf("Score on test %d: ", testIndex);
+		
+		// Read the score.
+		final int score = reader.nextInt();
+		
+		// Limit the score to the range 0 <= score <= 100.
+		student.setScore(testIndex, Math.max(0, Math.min(score, 100)));
+	}
+
 	/**
 	 * Outputs a student to the console.
-	 * @param student The student to output.
+	 * 
+	 * @param student
+	 *            The student to output.
 	 */
 	private void displayStudent(final Student student)
 	{
