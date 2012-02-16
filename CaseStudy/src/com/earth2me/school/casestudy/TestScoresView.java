@@ -15,7 +15,7 @@ public class TestScoresView
 	// Menu-driven command loop
 	private void run()
 	{
-		while (true)
+		for (;;)
 		{
 			System.out.println("start of run method");
 			System.out.println("Number of students: " + model.size());
