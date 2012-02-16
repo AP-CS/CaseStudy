@@ -24,7 +24,7 @@ public class TestScoresView implements Runnable
 			final int command = getCommand("Enter a number [1-11]: ", 1, quit);
 			if (command == quit)
 			{
-				break;
+				return;
 			}
 			runCommand(command);
 		}
