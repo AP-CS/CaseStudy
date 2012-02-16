@@ -133,6 +133,50 @@ final class TestScoresView implements Runnable
 	}
 	
 	/**
+	 * Outputs a list of all students.
+	 * @author Paul Buonopane
+	 */
+	private void displayAllStudents()
+	{
+		System.out.println(model);
+	}
+	
+	/**
+	 * Moves to the first element in the model.
+	 * @author Paul Buonopane
+	 */
+	private void moveToFirst()
+	{
+		model.first();
+	}
+	
+	/**
+	 * Moves to the last element in the model.
+	 * @author Paul Buonopane
+	 */
+	private void moveToLast()
+	{
+		model.last();
+	}
+	
+	/**
+	 * Moves to the next element in the model.
+	 * @author Paul Buonopane
+	 */
+	private void moveToNext()
+	{
+		model.next();
+	}
+	/**
+	 * Moves to the previous element in the model.
+	 * @author Paul Buonopane
+	 */
+	private void moveToPrevious()
+	{
+		model.previous();
+	}
+	
+	/**
 	 * Outputs the class average to the console.
 	 * 
 	 * @author Paul Buonopane
