@@ -19,7 +19,7 @@ final class TestScoresView implements Runnable
 			System.out.println("start of run method");
 			System.out.println("Number of students: " + model.size());
 			System.out.println("Index of current student: " + model.currentPosition());
-			
+
 			final int quit = displayMenu();
 			final int command = getCommand("Enter a number [1-11]: ", 1, quit);
 			if (command == quit)
@@ -33,7 +33,7 @@ final class TestScoresView implements Runnable
 	private int displayMenu()
 	{
 		System.out.println("MAIN MENU");
-		
+
 		final String[] menu = {
 				"Display the current student.",
 				"Display the class average.",
@@ -47,13 +47,13 @@ final class TestScoresView implements Runnable
 				"Move to the previous student.",
 				"Quit the program",
 		};
-		
+
 		// Print each menu item.
 		for (int i = 1; i < menu.length + 1; i++)
 		{
 			System.out.println(String.format("%2d. %s", i, menu[i]));
 		}
-		
+
 		return menu.length;
 	}
 
@@ -93,89 +93,95 @@ final class TestScoresView implements Runnable
 		case 1:
 			displayStudent();
 			break;
-			
+
 		case 2:
 			displayClassAverage();
 			break;
-			
+
 		case 3:
 			displayHighScore();
 			break;
-			
+
 		case 4:
 			displayAllStudents();
 			break;
-			
+
 		case 5:
 			editStudent();
 			break;
-			
+
 		case 6:
 			addStudent();
 			break;
-			
+
 		case 7:
 			moveToFirst();
 			break;
-			
+
 		case 8:
 			moveToLast();
 			break;
-			
+
 		case 9:
 			moveToNext();
 			break;
-			
+
 		case 10:
 			moveToPrevious();
 			break;
 		}
 	}
-	
+
 	/**
 	 * Outputs a list of all students.
+	 * 
 	 * @author Paul Buonopane
 	 */
 	private void displayAllStudents()
 	{
 		System.out.println(model);
 	}
-	
+
 	/**
 	 * Moves to the first element in the model.
+	 * 
 	 * @author Paul Buonopane
 	 */
 	private void moveToFirst()
 	{
 		model.first();
 	}
-	
+
 	/**
 	 * Moves to the last element in the model.
+	 * 
 	 * @author Paul Buonopane
 	 */
 	private void moveToLast()
 	{
 		model.last();
 	}
-	
+
 	/**
 	 * Moves to the next element in the model.
+	 * 
 	 * @author Paul Buonopane
 	 */
 	private void moveToNext()
 	{
 		model.next();
 	}
+
 	/**
 	 * Moves to the previous element in the model.
+	 * 
 	 * @author Paul Buonopane
 	 */
 	private void moveToPrevious()
 	{
 		model.previous();
 	}
-	
+
 	/**
 	 * Outputs the class average to the console.
 	 * 
@@ -199,16 +205,21 @@ final class TestScoresView implements Runnable
 		}
 	}
 
+	/**
+	 * Outputs the student with the highest grade, or
+	 * "No students have been added yet." if students have yet to be added to
+	 * the model.
+	 */
 	private void displayHighScore()
 	{
-		Student s = model.getHighScore();
-		if (s == null)
+		Student student = model.getHighScore();
+		if (student == null)
 		{
-			return; // TODO Replace with missing code
+			System.out.println("No students have been added yet.");
 		}
 		else
 		{
-			return; // TODO Replace with missing code
+			System.out.println(student);
 		}
 	}
 
