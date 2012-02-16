@@ -88,16 +88,28 @@ final class TestScoresView implements Runnable
 	// pressing the Enter key
 	private void runCommand(int command)
 	{
-		if (command == 1)
+		switch (command)
 		{
+		case 1:
 			displayStudent();
-		}
-		else if (command == 2)
-		{
-			System.out.println("Average score = " + model.getClassAverage());
+			break;
+			
+		case 2:
+			displayClassAverage();
+			break;
 		}
 
 		// missing code
+	}
+	
+	/**
+	 * Outputs the class average to the console.
+	 * 
+	 * @author Paul Buonopane
+	 */
+	private void displayClassAverage()
+	{
+		System.out.println("Average Score: " + model.getClassAverage());
 	}
 
 	private void displayStudent()
