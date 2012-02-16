@@ -48,16 +48,19 @@ public class TestScoresView implements Runnable
 	// Returns: a valid command number
 	private int getCommand(String prompt, int low, int high)
 	{
-		// errors checking
 		Scanner reader = new Scanner(System.in);
-		int command = low - 1;
-		while (command < low || command > high)
+		int command;
+		for (;;)
 		{
 			System.out.print(prompt);
 			command = reader.nextInt();
 			if (command < low || command > high)
 			{
 				System.out.println("Error: command must be between " + low + " and " + high);
+			}
+			else
+			{
+				break;
 			}
 		}
 		return command;
