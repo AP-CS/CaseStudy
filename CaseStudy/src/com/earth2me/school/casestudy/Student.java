@@ -77,13 +77,13 @@ final class Student
 
 	public String toString()
 	{
-		String str = "Name: " + name + "\n";
+		StringBuilder str = new StringBuilder("Name: " + name + "\n");
 		for (int i = 0; i < tests.length; i++)
 		{
-			str += "test " + (i + 1) + ":  " + tests[i] + "\n";
+			str.append("test ").append(i + 1).append(":  ").append(tests[i]).append("\n");
 		}
-		str += "Average: " + getAverage();
-		return str;
+		str.append("Average: ").append(getAverage());
+		return str.toString();
 	}
 
 	// Returns null if there are no errors else returns
