@@ -2,18 +2,17 @@ package com.earth2me.school.casestudy;
 
 import java.util.Scanner;
 
-public class TestScoresView
+public class TestScoresView implements Runnable
 {
 	private TestScoresModel model;
 
 	public TestScoresView(TestScoresModel m)
 	{
 		model = m;
-		run();
 	}
 
 	// Menu-driven command loop
-	private void run()
+	public void run()
 	{
 		for (;;)
 		{
