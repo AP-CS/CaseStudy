@@ -30,21 +30,6 @@ final class Student
 		}
 	}
 
-	// Name is nm and scores are in t
-	public Student(String nm, int[] t)
-	{
-		// name = nm;
-		tests = new int[t.length];
-		// for (int i = 0; i < tests.length; i++)
-		// tests[i] = t[i];
-	}
-
-	// Builds a copy of s
-	public Student(Student s)
-	{
-		this(s.name, s.tests);
-	}
-
 	public int getNumberOfTests()
 	{
 		return tests.length;
