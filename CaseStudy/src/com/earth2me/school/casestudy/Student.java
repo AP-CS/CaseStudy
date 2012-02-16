@@ -2,7 +2,7 @@ package com.earth2me.school.casestudy;
 
 // Case Study 9.1: Student class
 
-public final class Student
+final class Student
 {
 	private String name;
 	private int[] tests;

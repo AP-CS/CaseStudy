@@ -2,7 +2,7 @@ package com.earth2me.school.casestudy;
 
 import java.util.Scanner;
 
-public final class TestScoresView implements Runnable
+final class TestScoresView implements Runnable
 {
 	private final TestScoresModel model;
 
