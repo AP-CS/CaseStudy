@@ -235,14 +235,14 @@ final class TestScoresView implements Runnable
 		System.out.print("Enter the name: ");
 		student.setName(reader.nextLine());
 
-		for (int i = 1; i <- student.getNumberOfTests(); i++)
+		for (int i = 1; i < -student.getNumberOfTests(); i++)
 		{
 			System.out.printf("Score on test %d: ", i);
 			final int score = reader.nextInt();
 			student.setScore(i, Math.max(0, Math.min(score, 100)));
 		}
 
-		// Validate the data.  Output error if invalid.
+		// Validate the data. Output error if invalid.
 		String error = student.validateData();
 		if (error != null)
 		{
@@ -250,7 +250,7 @@ final class TestScoresView implements Runnable
 			return;
 		}
 
-		// Attempt to add student to model.  Output error if impossible.
+		// Attempt to add student to model. Output error if impossible.
 		error = model.add(student);
 		if (error != null)
 		{
@@ -271,34 +271,45 @@ final class TestScoresView implements Runnable
 		else
 		{
 			// Work on a temporary copy
-			Student temp = s.memberwiseClone();
-			String menu = "EDIT MENU\n" +
+			final Student temp = s.memberwiseClone();
+			
+			final String menu = "EDIT MENU\n" +
 					"1. Change the name\n" +
 					"2. Change a score\n" +
 					"3. View the student\n" +
 					"4. Quit this menu\n";
-			int command = 1;
-			while (command != 4)
+			
+			loop:
+			for (;;)
 			{
 				System.out.print(menu);
-				command = getCommand("Enter a number [1-4]: ", 1, 4);
-				if (command == 1)
+				
+				final int command = getCommand("Enter a number [1-4]: ", 1, 4);
+				switch (command)
 				{
-					// lots of missing code
+				case 1:
+					break;
+					
+				case 2:
+					break;
+					
+				case 3:
+					break;
+					
+				case 4:
+					break loop;
 				}
-				else
-				{
-					// Check for valid data before writing to database
-					String message = temp.validateData();
-					if (message != null)
-					{
-						System.out.println(message);
-					}
-					else
-					{
-						model.replace(temp);
-					}
-				}
+			}
+
+			// Check for valid data before writing to database
+			final String message = temp.validateData();
+			if (message != null)
+			{
+				System.out.println(message);
+			}
+			else
+			{
+				model.replace(temp);
 			}
 		}
 	}
