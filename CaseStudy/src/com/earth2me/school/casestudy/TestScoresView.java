@@ -223,33 +223,40 @@ final class TestScoresView implements Runnable
 		}
 	}
 
+	/**
+	 * Prompts the user to add a student to the model.
+	 */
 	private void addStudent()
 	{
-		Student s = new Student();
-		Scanner reader = new Scanner(System.in);
+		final Student student = new Student();
+		final Scanner reader = new Scanner(System.in);
+
+		// Request the name of the student.
 		System.out.print("Enter the name: ");
-		s.setName(reader.nextLine());
-		for (int i = 1; i <= s.getNumberOfTests(); i++)
+		student.setName(reader.nextLine());
+
+		for (int i = 1; i <= student.getNumberOfTests(); i++)
 		{
 			// missing code
 		}
-		String message = s.validateData();
-		if (message != null)
+
+		// Validate the data.  Output error if invalid.
+		String error = student.validateData();
+		if (error != null)
 		{
-			System.out.println(message);
+			System.out.println(error);
+			return;
 		}
-		else
+
+		// Attempt to add student to model.  Output error if impossible.
+		error = model.add(student);
+		if (error != null)
 		{
-			message = model.add(s);
-			if (message != null)
-			{
-				System.out.println(message);
-			}
-			else
-			{
-				System.out.println("Student added");
-			}
+			System.out.println(error);
+			return;
 		}
+
+		System.out.println("Student added.");
 	}
 
 	private void editStudent()
