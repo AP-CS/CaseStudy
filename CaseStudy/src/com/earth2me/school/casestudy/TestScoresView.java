@@ -151,7 +151,6 @@ public class TestScoresView implements Runnable
 					"2. Change a score\n" +
 					"3. View the student\n" +
 					"4. Quit this menu\n";
-			Scanner reader = new Scanner(System.in);
 			int command = 1;
 			while (command != 4)
 			{
