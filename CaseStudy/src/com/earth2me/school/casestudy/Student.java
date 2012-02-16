@@ -29,6 +29,18 @@ final class Student
 			tests[i] = 0;
 		}
 	}
+	
+	/**
+	 * Performs a shallow clone of the student.
+	 * @return A shallow clone of the current student object.
+	 */
+	public Student memberwiseClone()
+	{
+		final Student student = new Student(null, 0);
+		student.name = name;
+		student.tests = tests;
+		return student;
+	}
 
 	public int getNumberOfTests()
 	{

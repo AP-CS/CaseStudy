@@ -269,7 +269,7 @@ final class TestScoresView implements Runnable
 		else
 		{
 			// Work on a temporary copy
-			Student temp = new Student(s);
+			Student temp = s.memberwiseClone();
 			String menu = "EDIT MENU\n" +
 					"1. Change the name\n" +
 					"2. Change a score\n" +
