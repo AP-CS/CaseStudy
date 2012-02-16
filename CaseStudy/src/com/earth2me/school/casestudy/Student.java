@@ -24,10 +24,6 @@ final class Student
 	{
 		this.name = name;
 		tests = new int[testCount];
-		for (int i = 0; i < tests.length; i++)
-		{
-			tests[i] = 0;
-		}
 	}
 	
 	/**
