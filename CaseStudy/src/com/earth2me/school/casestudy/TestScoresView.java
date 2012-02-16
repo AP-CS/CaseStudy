@@ -235,9 +235,11 @@ final class TestScoresView implements Runnable
 		System.out.print("Enter the name: ");
 		student.setName(reader.nextLine());
 
-		for (int i = 1; i <= student.getNumberOfTests(); i++)
+		for (int i = 1; i <- student.getNumberOfTests(); i++)
 		{
-			// missing code
+			System.out.printf("Score on test %d: ", i);
+			final int score = reader.nextInt();
+			student.setScore(i, Math.max(0, Math.min(score, 100)));
 		}
 
 		// Validate the data.  Output error if invalid.
