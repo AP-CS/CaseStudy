@@ -22,12 +22,21 @@ final class Student
 	// Name is name and n scores are 0
 	public Student(String name, int testCount)
 	{
-		this.name = name.intern();
+		if (name == null)
+		{
+			this.name = null;
+		}
+		else
+		{
+			this.name = name.intern();
+		}
+
 		tests = new int[testCount];
 	}
-	
+
 	/**
 	 * Performs a shallow clone of the student.
+	 * 
 	 * @return A shallow clone of the current student object.
 	 */
 	public Student memberwiseClone()
@@ -45,7 +54,14 @@ final class Student
 
 	public void setName(String name)
 	{
-		this.name = name.intern();
+		if (name == null)
+		{
+			this.name = null;
+		}
+		else
+		{
+			this.name = name.intern();
+		}
 	}
 
 	public String getName()
@@ -102,7 +118,7 @@ final class Student
 		{
 			return "SORRY: Name required.";
 		}
-		
+
 		for (int score : tests)
 		{
 			if (score < 0 || score > 100)
@@ -112,7 +128,7 @@ final class Student
 				return str;
 			}
 		}
-		
+
 		return null;
 	}
 }
