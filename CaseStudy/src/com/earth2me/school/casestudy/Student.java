@@ -25,7 +25,9 @@ final class Student
 		name = nm;
 		tests = new int[n];
 		for (int i = 0; i < tests.length; i++)
+		{
 			tests[i] = 0;
+		}
 	}
 
 	// Name is nm and scores are in t
@@ -72,7 +74,9 @@ final class Student
 	{
 		int sum = 0;
 		for (int score : tests)
+		{
 			sum += score;
+		}
 		return sum / tests.length;
 	}
 
@@ -80,15 +84,19 @@ final class Student
 	{
 		int highScore = 0;
 		for (int score : tests)
+		{
 			highScore = Math.max(highScore, score);
+		}
 		return highScore;
 	}
 
 	public String toString()
 	{
-		String str = "Name:    " + name + "\n";
+		String str = "Name: " + name + "\n";
 		for (int i = 0; i < tests.length; i++)
+		{
 			str += "test " + (i + 1) + ":  " + tests[i] + "\n";
+		}
 		str += "Average: " + getAverage();
 		return str;
 	}
@@ -97,7 +105,11 @@ final class Student
 	// an appropriate error message.
 	public String validateData()
 	{
-		if (name.equals("")) return "SORRY: name required";
+		if (name == null || "".equals(name))
+		{
+			return "SORRY: Name required.";
+		}
+		
 		for (int score : tests)
 		{
 			if (score < 0 || score > 100)
@@ -107,6 +119,7 @@ final class Student
 				return str;
 			}
 		}
+		
 		return null;
 	}
 }
