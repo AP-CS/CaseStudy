@@ -275,7 +275,7 @@ final class TestScoresView implements Runnable
 		{
 			System.out.print(menu);
 
-			final int command = getCommand("Enter a number [1-4]: ", 1, 4);
+			final int command = getCommand("Enter a number [1-5]: ", 1, 5);
 			switch (command)
 			{
 			case 1:
