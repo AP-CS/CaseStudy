@@ -13,17 +13,17 @@ final class Student
 		this(null);
 	}
 
-	// Name is nm and 3 scores are 0
-	public Student(String nm)
+	// Name is name and 3 scores are 0
+	public Student(String name)
 	{
-		this(nm, 3);
+		this(name, 3);
 	}
 
-	// Name is nm and n scores are 0
-	public Student(String nm, int n)
+	// Name is name and n scores are 0
+	public Student(String name, int testCount)
 	{
-		name = nm;
-		tests = new int[n];
+		this.name = name;
+		tests = new int[testCount];
 		for (int i = 0; i < tests.length; i++)
 		{
 			tests[i] = 0;
