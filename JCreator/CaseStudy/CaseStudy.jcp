@@ -9,7 +9,7 @@ OUTPUTPATH := "..\\\\CaseStudy"
 COMPILER := ""
 
 ! Start RunTime Configuration Structure
-#[BeginRunTime]LABEL := "<Default>" RUNAPPLIC := "" RUNAPPLET := "" PARAM := "" RUN := "" CHECK := "10" #[EndRunTime]
+#[BeginRunTime]LABEL := "<Default>" RUNAPPLIC := "" RUNAPPLET := "" PARAM := "" RUN := "com.earth2me.school.casestudy.TestScoresApp" CHECK := "10" #[EndRunTime]
 ! Start Required Libraries Structure
 
 ! Start Project Folder Structure
