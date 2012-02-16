@@ -10,7 +10,7 @@ final class Student
 	// Default: Name is "" and 3 scores are 0
 	public Student()
 	{
-		this("");
+		this(null);
 	}
 
 	// Name is nm and 3 scores are 0
