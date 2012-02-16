@@ -343,7 +343,7 @@ final class TestScoresView implements Runnable
 	{
 		// Iterate through the tests and request scores.
 		final Scanner reader = new Scanner(System.in);
-		for (int i = 1; i < student.getNumberOfTests(); i++)
+		for (int i = 1; i <= student.getNumberOfTests(); i++)
 		{
 			System.out.printf("Score on test %d: ", i);
 			
