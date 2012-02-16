@@ -1,0 +1,24 @@
+! ** JCreator Project File (C)2000
+! ********** DO NOT EDIT *********
+
+VERSION := "1.10"
+LABEL := "CaseStudy"
+JDKPROFILE := ""
+ACTIVE := "1"
+OUTPUTPATH := "..\\\\CaseStudy"
+COMPILER := ""
+
+! Start RunTime Configuration Structure
+#[BeginRunTime]LABEL := "<Default>" RUNAPPLIC := "" RUNAPPLET := "" PARAM := "" RUN := "" CHECK := "10" #[EndRunTime]
+! Start Required Libraries Structure
+
+! Start Project Folder Structure
+#[BeginFolder]
+LABEL := "Root"
+FILTER := ""
+
+#[BeginFile]SOURCE := "..\\..\\CaseStudy\\src\\TestScoresView.java" #[EndFile]
+#[BeginFile]SOURCE := "..\\..\\CaseStudy\\src\\TestScoresModel.java" #[EndFile]
+#[BeginFile]SOURCE := "..\\..\\CaseStudy\\src\\TestScoresApp.java" #[EndFile]
+#[BeginFile]SOURCE := "..\\..\\CaseStudy\\src\\Student.java" #[EndFile]
+#[EndFolder]
