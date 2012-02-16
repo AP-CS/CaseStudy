@@ -1,3 +1,4 @@
+package com.earth2me.school.casestudy;
 // You need to complete this program you will 
 //not be able to run this program until you do.
 
