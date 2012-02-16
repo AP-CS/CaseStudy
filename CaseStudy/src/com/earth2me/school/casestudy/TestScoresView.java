@@ -5,7 +5,6 @@ import java.util.Scanner;
 final class TestScoresView implements Runnable
 {
 	private final TestScoresModel model;
-	private final Scanner reader = new Scanner(System.in);
 
 	public TestScoresView(final TestScoresModel model)
 	{
@@ -67,6 +66,7 @@ final class TestScoresView implements Runnable
 	// Returns: a valid command number
 	private int getCommand(String prompt, int low, int high)
 	{
+		final Scanner reader = new Scanner(System.in);
 		for (int command;;)
 		{
 			System.out.print(prompt);
@@ -320,7 +320,17 @@ final class TestScoresView implements Runnable
 	private void changeName(final Student student)
 	{
 		System.out.print("Enter the name of the student: ");
-		student.setName(reader.nextLine());
+		
+		// Ignore blank lines.
+		final Scanner reader = new Scanner(System.in);
+		String line;
+		do
+		{
+			line = reader.nextLine();
+		}
+		while (line == null || line.length() < 1);
+		
+		student.setName(line);
 	}
 
 	/**
@@ -332,6 +342,7 @@ final class TestScoresView implements Runnable
 	private void changeAllScores(final Student student)
 	{
 		// Iterate through the tests and request scores.
+		final Scanner reader = new Scanner(System.in);
 		for (int i = 1; i < -student.getNumberOfTests(); i++)
 		{
 			System.out.printf("Score on test %d: ", i);
@@ -362,6 +373,7 @@ final class TestScoresView implements Runnable
 
 		// Loop until we have a valid test number.
 		int testIndex;
+		final Scanner reader = new Scanner(System.in);
 		for (;;)
 		{
 			System.out.printf("Test score to change [1-%d]: ", testCount);
