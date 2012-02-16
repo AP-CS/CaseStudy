@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class TestScoresView implements Runnable
 {
-	private TestScoresModel model;
+	private final TestScoresModel model;
 
-	public TestScoresView(TestScoresModel m)
+	public TestScoresView(final TestScoresModel model)
 	{
-		model = m;
+		this.model = model;
 	}
 
 	// Menu-driven command loop
