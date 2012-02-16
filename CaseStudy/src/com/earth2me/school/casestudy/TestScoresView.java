@@ -165,8 +165,14 @@ public class TestScoresView implements Runnable
 				{
 					// Check for valid data before writing to database
 					String message = temp.validateData();
-					if (message != null) System.out.println(message);
-					else model.replace(temp);
+					if (message != null)
+					{
+						System.out.println(message);
+					}
+					else
+					{
+						model.replace(temp);
+					}
 				}
 			}
 		}
