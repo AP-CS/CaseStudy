@@ -168,11 +168,11 @@ final class TestScoresModel
 
 	public String toString()
 	{
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < studentCount; i++)
 		{
-			result = result + students[i] + "\n";
+			result = result.append(students[i]).append('\n');
 		}
-		return result;
+		return result.toString();
 	}
 }
