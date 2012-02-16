@@ -97,9 +97,39 @@ final class TestScoresView implements Runnable
 		case 2:
 			displayClassAverage();
 			break;
+			
+		case 3:
+			displayHighScore();
+			break;
+			
+		case 4:
+			displayAllStudents();
+			break;
+			
+		case 5:
+			editStudent();
+			break;
+			
+		case 6:
+			addStudent();
+			break;
+			
+		case 7:
+			moveToFirst();
+			break;
+			
+		case 8:
+			moveToLast();
+			break;
+			
+		case 9:
+			moveToNext();
+			break;
+			
+		case 10:
+			moveToPrevious();
+			break;
 		}
-
-		// missing code
 	}
 	
 	/**
