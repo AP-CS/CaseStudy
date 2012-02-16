@@ -112,7 +112,7 @@ final class TestScoresModel
 
 	public Student currentStudent()
 	{
-		if (indexSelectedStudent == -1)
+		if (indexSelectedStudent < 0 || indexSelectedStudent >= students.length)
 		{
 			return null;
 		}
