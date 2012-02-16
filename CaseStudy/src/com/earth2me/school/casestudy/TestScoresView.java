@@ -38,14 +38,13 @@ final class TestScoresView implements Runnable
 				"Display the current student.",
 				"Display the class average.",
 				"Display the student with the highest grade.",
-				// TODO Missing menu items.
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
+				"Display all of the students.",
+				"Edit the current student.",
+				"Add a new student.",
+				"Move to the first student.",
+				"Move to the last student.",
+				"Move to the next student.",
+				"Move to the previous student.",
 				"Quit the program",
 		};
 		
