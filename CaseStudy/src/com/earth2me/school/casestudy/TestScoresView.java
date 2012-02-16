@@ -5,6 +5,7 @@ import java.util.Scanner;
 final class TestScoresView implements Runnable
 {
 	private final TestScoresModel model;
+	private final Scanner reader = new Scanner(System.in);
 
 	public TestScoresView(final TestScoresModel model)
 	{
@@ -65,9 +66,7 @@ final class TestScoresView implements Runnable
 	// Returns: a valid command number
 	private int getCommand(String prompt, int low, int high)
 	{
-		Scanner reader = new Scanner(System.in);
-		int command;
-		for (;;)
+		for (int command;;)
 		{
 			System.out.print(prompt);
 			command = reader.nextInt();
@@ -77,10 +76,9 @@ final class TestScoresView implements Runnable
 			}
 			else
 			{
-				break;
+				return command;
 			}
 		}
-		return command;
 	}
 
 	// Selects a command to run based on a command number,
@@ -229,18 +227,9 @@ final class TestScoresView implements Runnable
 	private void addStudent()
 	{
 		final Student student = new Student();
-		final Scanner reader = new Scanner(System.in);
 
-		// Request the name of the student.
-		System.out.print("Enter the name: ");
-		student.setName(reader.nextLine());
-
-		for (int i = 1; i < -student.getNumberOfTests(); i++)
-		{
-			System.out.printf("Score on test %d: ", i);
-			final int score = reader.nextInt();
-			student.setScore(i, Math.max(0, Math.min(score, 100)));
-		}
+		changeName(student);
+		changeAllScores(student);
 
 		// Validate the data. Output error if invalid.
 		String error = student.validateData();
@@ -263,54 +252,89 @@ final class TestScoresView implements Runnable
 
 	private void editStudent()
 	{
-		Student s = model.currentStudent();
-		if (s == null)
+		Student student = model.currentStudent();
+		if (student == null)
 		{
-			System.out.println("No student is currently available");
+			System.out.println("No student is currently available.");
+			return;
+		}
+
+		// Work on a temporary copy
+		final Student temp = student.memberwiseClone();
+
+		final String menu = "EDIT MENU\n" +
+				"1. Change the name\n" +
+				"2. Change scores\n" +
+				"3. View the student\n" +
+				"4. Quit this menu\n";
+
+		loop:
+		for (;;)
+		{
+			System.out.print(menu);
+
+			final int command = getCommand("Enter a number [1-4]: ", 1, 4);
+			switch (command)
+			{
+			case 1:
+				changeName(student);
+				break;
+
+			case 2:
+				changeAllScores(student);
+				break;
+
+			case 3:
+				displayStudent(student);
+				break;
+
+			case 4:
+				break loop;
+			}
+		}
+
+		// Check for valid data before writing to database
+		final String message = temp.validateData();
+		if (message != null)
+		{
+			System.out.println(message);
 		}
 		else
 		{
-			// Work on a temporary copy
-			final Student temp = s.memberwiseClone();
-			
-			final String menu = "EDIT MENU\n" +
-					"1. Change the name\n" +
-					"2. Change a score\n" +
-					"3. View the student\n" +
-					"4. Quit this menu\n";
-			
-			loop:
-			for (;;)
-			{
-				System.out.print(menu);
-				
-				final int command = getCommand("Enter a number [1-4]: ", 1, 4);
-				switch (command)
-				{
-				case 1:
-					break;
-					
-				case 2:
-					break;
-					
-				case 3:
-					break;
-					
-				case 4:
-					break loop;
-				}
-			}
-
-			// Check for valid data before writing to database
-			final String message = temp.validateData();
-			if (message != null)
-			{
-				System.out.println(message);
-			}
-			else
-			{
-				model.replace(temp);
-			}
+			model.replace(temp);
 		}
+	}
+	
+	/**
+	 * Prompts the user to change the name of a student.
+	 * @param student The student to change.
+	 */
+	private void changeName(final Student student)
+	{
+		System.out.print("Enter the name of the student: ");
+		student.setName(reader.nextLine());
+	}
+	
+	/**
+	 * Prompts the user to change all of the score for a student's tests.
+	 * @param student The student to change.
+	 */
+	private void changeAllScores(final Student student)
+	{
+		for (int i = 1; i < -student.getNumberOfTests(); i++)
+		{
+			System.out.printf("Score on test %d: ", i);
+			final int score = reader.nextInt();
+			student.setScore(i, Math.max(0, Math.min(score, 100)));
+		}
+	}
+	
+	/**
+	 * Outputs a student to the console.
+	 * @param student The student to output.
+	 */
+	private void displayStudent(final Student student)
+	{
+		System.out.println(student);
 	}
 }
