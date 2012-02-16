@@ -2,9 +2,8 @@ package com.earth2me.school.casestudy;
 
 // Case Study 9.1: TestScoresModel class
 
-public class TestScoresModel
+public final class TestScoresModel
 {
-
 	private Student[] students; // Array of students
 	private int indexSelectedStudent; // Position of current student
 	private int studentCount; // Current number of students
