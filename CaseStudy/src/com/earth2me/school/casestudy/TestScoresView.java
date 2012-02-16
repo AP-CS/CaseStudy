@@ -1,13 +1,9 @@
 package com.earth2me.school.casestudy;
 
-// You need to complete this program you will 
-//not be able to run this program until you do.
-
 import java.util.Scanner;
 
 public class TestScoresView
 {
-
 	private TestScoresModel model;
 
 	public TestScoresView(TestScoresModel m)
@@ -28,7 +24,9 @@ public class TestScoresView
 			displayMenu();
 			int command = getCommand("Enter a number [1-11]: ", 1, 11);
 			if (command == 11)
+			{
 				break;
+			}
 			runCommand(command);
 		}
 	}
@@ -60,8 +58,9 @@ public class TestScoresView
 			System.out.print(prompt);
 			command = reader.nextInt();
 			if (command < low || command > high)
-				System.out.println("Error: command must be between " +
-						low + " and " + high);
+			{
+				System.out.println("Error: command must be between " + low + " and " + high);
+			}
 		}
 		return command;
 	}
@@ -71,9 +70,14 @@ public class TestScoresView
 	// pressing the Enter key
 	private void runCommand(int command)
 	{
-		if (command == 1) displayStudent();
+		if (command == 1)
+		{
+			displayStudent();
+		}
 		else if (command == 2)
+		{
 			System.out.println("Average score = " + model.getClassAverage());
+		}
 
 		// missing code
 	}
@@ -81,8 +85,14 @@ public class TestScoresView
 	private void displayStudent()
 	{
 		Student s = model.currentStudent();
-		if (s == null) System.out.println("No student is currently available");
-		else System.out.println(s);
+		if (s == null)
+		{
+			System.out.println("No student is currently available");
+		}
+		else
+		{
+			System.out.println(s);
+		}
 	}
 
 	private void displayHighScore()
@@ -109,19 +119,31 @@ public class TestScoresView
 			// missing code
 		}
 		String message = s.validateData();
-		if (message != null) System.out.println(message);
+		if (message != null)
+		{
+			System.out.println(message);
+		}
 		else
 		{
 			message = model.add(s);
-			if (message != null) System.out.println(message);
-			else System.out.println("Student added");
+			if (message != null)
+			{
+				System.out.println(message);
+			}
+			else
+			{
+				System.out.println("Student added");
+			}
 		}
 	}
 
 	private void editStudent()
 	{
 		Student s = model.currentStudent();
-		if (s == null) System.out.println("No student is currently available");
+		if (s == null)
+		{
+			System.out.println("No student is currently available");
+		}
 		else
 		{
 			// Work on a temporary copy
