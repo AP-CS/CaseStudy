@@ -22,7 +22,7 @@ final class Student
 	// Name is name and n scores are 0
 	public Student(String name, int testCount)
 	{
-		this.name = name;
+		this.name = name.intern();
 		tests = new int[testCount];
 	}
 	
@@ -43,9 +43,9 @@ final class Student
 		return tests.length;
 	}
 
-	public void setName(String nm)
+	public void setName(String name)
 	{
-		name = nm;
+		this.name = name.intern();
 	}
 
 	public String getName()
