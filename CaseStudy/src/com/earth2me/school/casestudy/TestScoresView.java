@@ -32,12 +32,27 @@ public class TestScoresView implements Runnable
 	private void displayMenu()
 	{
 		System.out.println("MAIN MENU");
-		System.out.println(" 1. Display the current student");
-		System.out.println(" 2. Display the class average");
-		System.out.println(" 3. Display the student with the highest grade");
-		// missing code
-
-		System.out.println("11. Quit the program");
+		
+		final String[] menu = {
+				"Display the current student.",
+				"Display the class average.",
+				"Display the student with the highest grade.",
+				// TODO Missing menu items.
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"Quit the program",
+		};
+		
+		// Print each menu item.
+		for (int i = 1; i < menu.length + 1; i++)
+		{
+			System.out.println(String.format("%2d. %s", i, menu[i]));
+		}
 	}
 
 	// Prompts the user for a command number and runs until
