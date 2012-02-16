@@ -19,9 +19,10 @@ public class TestScoresView implements Runnable
 			System.out.println("start of run method");
 			System.out.println("Number of students: " + model.size());
 			System.out.println("Index of current student: " + model.currentPosition());
-			displayMenu();
-			int command = getCommand("Enter a number [1-11]: ", 1, 11);
-			if (command == 11)
+			
+			final int quit = displayMenu();
+			final int command = getCommand("Enter a number [1-11]: ", 1, quit);
+			if (command == quit)
 			{
 				break;
 			}
@@ -29,7 +30,7 @@ public class TestScoresView implements Runnable
 		}
 	}
 
-	private void displayMenu()
+	private int displayMenu()
 	{
 		System.out.println("MAIN MENU");
 		
@@ -53,6 +54,8 @@ public class TestScoresView implements Runnable
 		{
 			System.out.println(String.format("%2d. %s", i, menu[i]));
 		}
+		
+		return menu.length;
 	}
 
 	// Prompts the user for a command number and runs until
