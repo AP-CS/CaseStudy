@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: com.earth2me.school.casestudy.TestScoresApp
+
+Name: com/earth2me/school/casestudy
+Sealed: true
